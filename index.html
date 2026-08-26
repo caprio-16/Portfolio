@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A modern vanilla HTML, CSS and JavaScript developer portfolio.">
+  <title>Jubin Pal — Developer Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Decorative background glow -->
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Jubin Pal home">
+        <span class="brand-mark">&lt;/&gt;</span>
+        <span>Jubin<span class="accent">.</span></span>
+      </a>
+
+      <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch to light theme"
+          title="Switch theme"
+      >
+          <span class="theme-icon">☀</span>
+      </button>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero section -->
+    <section id="home" class="hero section" data-section="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">HELLO, WORLD <span class="pulse-dot"></span></p>
+          <h1 class="reveal reveal-delay-1">
+            I build <span class="gradient-text">digital experiences</span>
+            that feel effortless.
+          </h1>
+          <p class="hero-description reveal reveal-delay-2">
+            Front-end developer focused on accessible interfaces, thoughtful interactions,
+            and clean, maintainable code.
+          </p>
+
+          <div class="hero-actions reveal reveal-delay-3">
+            <a class="button button-primary" href="#projects">
+              View my work <span class="button-arrow">→</span>
+            </a>
+            <a class="button button-ghost" href="#contact">Let's talk</a>
+          </div>
+
+          <div class="hero-meta reveal reveal-delay-4">
+            <span><i class="status-dot"></i> Available for projects</span>
+            <span>Based in Kolkata, India</span>
+          </div>
+        </div>
+
+        <div class="hero-art reveal reveal-delay-2" aria-hidden="true">
+          <div class="code-window">
+            <div class="window-bar">
+              <span></span><span></span><span></span>
+              <small>developer.js</small>
+            </div>
+            <pre><code><span class="code-purple">const</span> developer = {
+  <span class="code-blue">name</span>: <span class="code-green">"Jubin"</span>,
+  <span class="code-blue">focus</span>: <span class="code-green">"Frontend"</span>,
+  <span class="code-blue">loves</span>: [
+    <span class="code-green">"clean UI"</span>,
+    <span class="code-green">"good UX"</span>,
+    <span class="code-green">"coffee"</span>
+  ]
+};
+
+<span class="code-purple">while</span> (learning) {
+  build(<span class="code-green">"something useful"</span>);
+}</code></pre>
+          </div>
+          <div class="floating-chip chip-one">HTML</div>
+          <div class="floating-chip chip-two">CSS</div>
+          <div class="floating-chip chip-three">JS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects section -->
+    <section id="projects" class="section section-border" data-section="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">SELECTED WORK</p>
+            <h2>Things I've built.</h2>
+          </div>
+          <p class="section-intro">A few projects that combine design, code, and a little curiosity.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal" tabindex="0"
+                   data-project="0"
+                   data-title="Orbit Dashboard"
+                   data-category="Web Application"
+                   data-description="A responsive analytics dashboard designed around clear information hierarchy, fast scanning, and reusable UI patterns."
+                   data-tech="HTML • CSS • JavaScript"
+                   data-year="2026">
+            <div class="project-preview preview-orbit">
+              <div class="mini-sidebar"></div>
+              <div class="mini-chart">
+                <span style="height:38%"></span><span style="height:58%"></span>
+                <span style="height:45%"></span><span style="height:76%"></span>
+                <span style="height:65%"></span><span style="height:88%"></span>
+              </div>
+              <div class="mini-card"></div>
+            </div>
+            <div class="project-content">
+              <div>
+                <p class="project-number">01 / 03</p>
+                <h3>Orbit Dashboard</h3>
+                <p>Analytics interface for tracking product metrics.</p>
+              </div>
+              <button class="project-link" type="button" aria-label="View Orbit Dashboard details">↗</button>
+            </div>
+            <div class="project-tags"><span>UI Design</span><span>JavaScript</span></div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-1" tabindex="0"
+                   data-project="1"
+                   data-title="Lumen Studio"
+                   data-category="Creative Website"
+                   data-description="A cinematic studio landing page with layered typography, responsive layouts, and subtle motion that keeps the experience expressive without becoming distracting."
+                   data-tech="HTML • CSS • JavaScript"
+                   data-year="2026">
+            <div class="project-preview preview-lumen">
+              <div class="lumen-orb"></div>
+              <span class="lumen-word">LUMEN</span>
+              <div class="lumen-line"></div>
+            </div>
+            <div class="project-content">
+              <div>
+                <p class="project-number">02 / 03</p>
+                <h3>Lumen Studio</h3>
+                <p>Immersive site for an independent creative studio.</p>
+              </div>
+              <button class="project-link" type="button" aria-label="View Lumen Studio details">↗</button>
+            </div>
+            <div class="project-tags"><span>Creative Dev</span><span>Motion</span></div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-2" tabindex="0"
+                   data-project="2"
+                   data-title="Focus Timer"
+                   data-category="Productivity Tool"
+                   data-description="A distraction-free focus timer built around a tiny feature set: choose a session, start working, and get a clear visual cue when it's time to pause."
+                   data-tech="HTML • CSS • JavaScript"
+                   data-year="2025">
+            <div class="project-preview preview-focus">
+              <div class="timer-ring"><span>24:59</span></div>
+              <div class="timer-controls"><i></i><i></i><i></i></div>
+            </div>
+            <div class="project-content">
+              <div>
+                <p class="project-number">03 / 03</p>
+                <h3>Focus Timer</h3>
+                <p>Minimal Pomodoro-inspired productivity tool.</p>
+              </div>
+              <button class="project-link" type="button" aria-label="View Focus Timer details">↗</button>
+            </div>
+            <div class="project-tags"><span>Vanilla JS</span><span>UX</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills section -->
+    <section id="skills" class="section" data-section="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">TOOLKIT</p>
+            <h2>Built with the basics. <span class="muted">Done well.</span></h2>
+          </div>
+        </div>
+
+        <div class="skills-layout">
+          <div class="skill-list">
+            <div class="skill-item reveal">
+              <div class="skill-icon">&lt;/&gt;</div>
+              <div class="skill-info"><h3>HTML</h3><p>Semantic structure & accessibility</p></div>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item reveal reveal-delay-1">
+              <div class="skill-icon">#</div>
+              <div class="skill-info"><h3>CSS</h3><p>Responsive layouts & animation</p></div>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-item reveal reveal-delay-2">
+              <div class="skill-icon">JS</div>
+              <div class="skill-info"><h3>JavaScript</h3><p>DOM, events & APIs</p></div>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-item reveal reveal-delay-3">
+              <div class="skill-icon">G</div>
+              <div class="skill-info"><h3>Git</h3><p>Version control & collaboration</p></div>
+              <span class="skill-level">Intermediate</span>
+            </div>
+          </div>
+
+          <div class="skill-note reveal">
+            <span class="quote-mark">“</span>
+            <p>I care about the details users don't consciously notice — the rhythm, feedback, and tiny moments that make an interface feel right.</p>
+            <span class="quote-author">— My approach to development</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About section -->
+    <section id="about" class="section section-border" data-section="about">
+      <div class="container about-grid">
+        <div class="about-statement reveal">
+          <p class="eyebrow">A LITTLE ABOUT ME</p>
+          <h2>Curious by default.<br><span class="gradient-text">Always learning.</span></h2>
+        </div>
+        <div class="about-copy reveal reveal-delay-1">
+          <p>
+            I'm a developer who enjoys turning ideas into interfaces people actually enjoy using.
+            I started with the fundamentals — HTML, CSS, and JavaScript — and I'm still a big believer
+            that strong fundamentals beat unnecessary complexity.
+          </p>
+          <p>
+            When I'm not coding, you'll probably find me reading, experimenting with a new idea,
+            or taking apart a design to figure out why it works.
+          </p>
+          <a class="text-link" href="#contact">Have an idea? Tell me about it <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact" class="section contact-section" data-section="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">GET IN TOUCH</p>
+          <h2>Let's make something <span class="gradient-text">great.</span></h2>
+          <p>Have a project, question, or just want to say hello? My inbox is always open.</p>
+          <div class="contact-links">
+            <a href="mailto:hello@example.com">paljubin60@gmail.com <span>↗</span></a>
+            <a href="https://www.linkedin.com/in/jubin-pal-537863324?utm_source=share_via&utm_content=profile&utm_medium=member_android" aria-label="LinkedIn profile">LinkedIn <span>↗</span></a>
+            <a href="https://github.com/caprio-16" aria-label="GitHub profile">GitHub <span>↗</span></a>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form reveal reveal-delay-1" novalidate>
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+            <span class="field-feedback" aria-live="polite"></span>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <span class="field-feedback" aria-live="polite"></span>
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me a little about your project..." required></textarea>
+            <span class="field-feedback" aria-live="polite"></span>
+          </div>
+          <button class="button button-primary submit-button" type="submit">
+            Send message <span class="button-arrow">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Jubin Pal. Built with HTML, CSS & JavaScript.</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Project details modal -->
+  <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" type="button" aria-label="Close project details" data-close-modal>×</button>
+      <p class="eyebrow" id="modal-category"></p>
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+      <div class="modal-meta">
+        <span id="modal-tech"></span>
+        <span id="modal-year"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span id="toast-message">Message sent successfully!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
