@@ -256,12 +256,14 @@ button { cursor: pointer; }
   border-radius: 10px;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: #071014;
-  font-family: var(--font-body);
-  font-weight: 800;
-  font-size: .72rem;
-  letter-spacing: .01em;
   box-shadow: 0 4px 14px rgba(85, 230, 255, .25);
   transition: transform .3s var(--ease), box-shadow .3s ease;
+}
+
+.brand-mark svg {
+  width: 19px;
+  height: 19px;
+  display: block;
 }
 
 .brand:hover .brand-mark {
