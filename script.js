@@ -27,11 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
 
+    // FIX: icon now matches the mode you're IN, not the mode you'd switch to.
     if (theme === "light") {
-      themeIcon.textContent = "☾";
+      themeIcon.textContent = "☀";
       themeToggle.setAttribute("aria-label", "Switch to dark theme");
     } else {
-      themeIcon.textContent = "☀";
+      themeIcon.textContent = "☾";
       themeToggle.setAttribute("aria-label", "Switch to light theme");
     }
 
@@ -44,6 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (savedTheme) {
     applyTheme(savedTheme);
+  } else {
+    // FIX: no saved theme yet — sync the icon to the default (dark) state
+    // instead of leaving the hardcoded HTML icon unmanaged.
+    applyTheme("dark");
   }
 
   // Change theme when the button is clicked.
