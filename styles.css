@@ -466,8 +466,9 @@ html[data-theme="light"] .theme-icon {
 .hero-art { position: relative; min-height: 340px; display: grid; place-items: center; }
 
 .code-window {
+  position: relative;
   width: min(100%, 460px);
-  overflow: hidden;
+  overflow: visible;
   border: 2px solid var(--text);
   border-radius: 0;
   color: var(--text);
@@ -512,7 +513,8 @@ html[data-theme="light"] .theme-icon {
 .code-window pre {
   margin: 0;
   padding: 1.6rem;
-  overflow-x: auto;
+  overflow: hidden auto;
+  max-height: 320px;
   color: var(--muted);
   font: .78rem/2 var(--font-mono);
 }
@@ -534,25 +536,30 @@ html[data-theme="light"] .theme-icon {
 
 @keyframes cursor-blink { 50% { opacity: 0; } }
 
-/* Floating chips restyled as sewn-on patches / ink stamps */
+/* Floating chips restyled as sewn-on patches / ink stamps.
+   Pinned to the card's own corners (not the taller hero-art box) with
+   pixel offsets, so they hang just off the border and can never drift
+   across the code text underneath, at any viewport or content length. */
 .floating-chip {
   position: absolute;
-  padding: .45rem .7rem;
+  z-index: 2;
+  padding: .4rem .65rem;
   border: 2px solid currentColor;
   border-radius: var(--radius);
   color: var(--accent);
   background: var(--bg);
-  font: 700 .68rem var(--font-mono);
+  font: 700 .66rem var(--font-mono);
   text-transform: uppercase;
   letter-spacing: .06em;
+  box-shadow: 3px 3px 0 0 var(--bg);
   animation: float 4s ease-in-out infinite;
 }
 
-.chip-one { top: 8%; right: 0%; transform: rotate(6deg); }
-.chip-two { left: -4%; bottom: 18%; color: var(--accent-2); animation-delay: -1.2s; transform: rotate(-5deg); }
-.chip-three { right: 6%; bottom: -2%; color: var(--text); animation-delay: -2.3s; transform: rotate(4deg); }
+.chip-one   { top: -14px; right: -12px; transform: rotate(6deg); }
+.chip-two   { bottom: -14px; left: -12px; color: var(--accent-2); animation-delay: -1.2s; transform: rotate(-5deg); }
+.chip-three { top: -14px; left: -12px; color: var(--text); animation-delay: -2.3s; transform: rotate(4deg); }
 
-@keyframes float { 50% { transform: translateY(-8px) rotate(-2deg); } }
+@keyframes float { 50% { transform: translateY(-6px) rotate(-2deg); } }
 
 /* ---------- Section heading ---------- */
 
@@ -1279,10 +1286,10 @@ html[data-theme="light"] .theme-icon {
   .code-window { width: min(100%, 440px); transform: none; }
   .hero-art:hover .code-window { transform: translateY(-4px); }
 
-  .floating-chip { font-size: .6rem; }
-  .chip-one { top: 5%; right: 0; }
-  .chip-two { left: 0; bottom: 12%; }
-  .chip-three { right: 3%; bottom: 0; }
+  .floating-chip { font-size: .58rem; padding: .32rem .5rem; }
+  .chip-one   { top: -10px; right: -8px; }
+  .chip-two   { bottom: -10px; left: -8px; }
+  .chip-three { top: -10px; left: -8px; }
 
   .section-heading { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
   .section-heading h2, .about-statement h2, .contact-copy h2 { font-size: clamp(2.3rem, 11vw, 3.4rem); }
