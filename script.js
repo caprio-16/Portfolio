@@ -169,6 +169,75 @@ document.addEventListener("DOMContentLoaded", () => {
   updateScrollUI();
 
   /* ---------------------------------------------------------
+     4b. Hero: typed rotating words + mouse parallax
+     Both skip straight to a static end-state when the user
+     prefers reduced motion.
+     --------------------------------------------------------- */
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const typedTextEl = document.querySelector("#typedText");
+  const typedWords = ["dashboards.", "landing pages.", "small tools.", "smooth interactions."];
+
+  if (typedTextEl) {
+    if (prefersReducedMotion) {
+      typedTextEl.textContent = typedWords[0];
+    } else {
+      let wordIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      const typeTick = () => {
+        const word = typedWords[wordIndex];
+
+        if (!deleting) {
+          charIndex += 1;
+          typedTextEl.textContent = word.slice(0, charIndex);
+
+          if (charIndex === word.length) {
+            deleting = true;
+            setTimeout(typeTick, 1500);
+            return;
+          }
+        } else {
+          charIndex -= 1;
+          typedTextEl.textContent = word.slice(0, charIndex);
+
+          if (charIndex === 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % typedWords.length;
+          }
+        }
+
+        setTimeout(typeTick, deleting ? 35 : 65);
+      };
+
+      typeTick();
+    }
+  }
+
+  const heroArt = document.querySelector(".hero-art");
+  const codeWindow = document.querySelector(".code-window");
+
+  if (heroArt && codeWindow && !prefersReducedMotion) {
+    heroArt.addEventListener("mousemove", (event) => {
+      const rect = heroArt.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+      const rotate = (2 - x * 5).toFixed(2);
+      const translateX = (x * 16).toFixed(1);
+      const translateY = (y * 16 - 6).toFixed(1);
+
+      codeWindow.style.transform =
+        `rotate(${rotate}deg) translate(${translateX}px, ${translateY}px)`;
+    });
+
+    heroArt.addEventListener("mouseleave", () => {
+      codeWindow.style.transform = "";
+    });
+  }
+
+  /* ---------------------------------------------------------
      5. Project modal
      Clicking a project opens a reusable modal populated from
      data-* attributes in the HTML.
