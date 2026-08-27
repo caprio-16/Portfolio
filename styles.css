@@ -438,22 +438,25 @@ html[data-theme="light"] .theme-icon {
   text-transform: uppercase;
   letter-spacing: .04em;
   overflow: hidden;
-  transition: transform .2s ease, background .25s ease, border-color .25s ease, color .25s ease;
+  box-shadow: 4px 4px 0 0 var(--border-strong);
+  transition: transform .2s ease, background .25s ease, border-color .25s ease, color .25s ease, box-shadow .2s ease;
 }
 
-.button:active { transform: scale(.96); }
+/* stamp-thud: press it and the shadow collapses flat, like ink hitting paper */
+.button:active { transform: translate(3px, 3px); box-shadow: 0 0 0 0 transparent; }
 
 .button-primary {
   color: var(--bg);
   background: var(--accent);
   border-color: var(--accent);
+  box-shadow: 4px 4px 0 0 var(--text);
 }
 
-.button-primary:hover { background: var(--text); border-color: var(--text); transform: translateY(-2px); }
+.button-primary:hover { background: var(--text); border-color: var(--text); transform: translateY(-2px); box-shadow: 5px 6px 0 0 var(--accent); }
 
 .button-ghost { background: transparent; }
 
-.button-ghost:hover { background: var(--surface-2); transform: translateY(-2px); }
+.button-ghost:hover { background: var(--surface-2); transform: translateY(-2px); box-shadow: 5px 6px 0 0 var(--text); }
 
 .button-arrow { display: inline-block; transition: transform .25s var(--ease); }
 .button:hover .button-arrow { transform: translateX(4px); }
@@ -517,6 +520,19 @@ html[data-theme="light"] .theme-icon {
 .code-purple { color: var(--accent-2); }
 .code-blue { color: var(--text); }
 .code-green { color: var(--accent); }
+
+/* a typewriter cursor, still blinking at the end of the file */
+.code-cursor {
+  display: inline-block;
+  width: .5em;
+  height: 1.1em;
+  margin-left: 1px;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  animation: cursor-blink 1s steps(1) infinite;
+}
+
+@keyframes cursor-blink { 50% { opacity: 0; } }
 
 /* Floating chips restyled as sewn-on patches / ink stamps */
 .floating-chip {
@@ -694,13 +710,48 @@ html[data-theme="light"] .theme-icon {
 
 /* wax-seal / ink-stamp orb instead of a purple gradient glow */
 .lumen-orb {
+  position: relative;
   width: 96px;
   height: 96px;
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 6px var(--bg), 0 0 0 8px var(--accent);
+  animation: seal-breathe 3.6s ease-in-out infinite;
   transition: transform .6s var(--ease);
 }
+
+/* a second ring bleeds outward like ink soaking into paper */
+.lumen-orb::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ink-bleed 3.6s ease-out infinite;
+}
+
+/* a thin rotating tick ring, like a wax seal's pressed edge */
+.lumen-orb::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--border-strong);
+  animation: seal-spin 12s linear infinite;
+}
+
+@keyframes seal-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes ink-bleed {
+  0% { transform: scale(.85); opacity: .55; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+@keyframes seal-spin { to { transform: rotate(360deg); } }
 
 .project-card:hover .lumen-orb { transform: scale(1.08) rotate(-4deg); }
 
@@ -712,9 +763,39 @@ html[data-theme="light"] .theme-icon {
   font-size: 2rem;
   letter-spacing: .1em;
   text-transform: uppercase;
+  animation: word-flicker 4.5s ease-in-out infinite;
 }
 
-.lumen-line { position: absolute; top: 28px; right: 30px; left: 30px; height: 2px; background: var(--border-strong); }
+@keyframes word-flicker {
+  0%, 92%, 100% { opacity: 1; }
+  94% { opacity: .55; }
+  96% { opacity: 1; }
+}
+
+.lumen-line {
+  position: absolute;
+  top: 28px; right: 30px; left: 30px; height: 2px;
+  background: var(--border-strong);
+  overflow: hidden;
+}
+
+/* a stamped underline drawing itself, left to right, on loop */
+.lumen-line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: line-draw 3.6s ease-in-out infinite;
+}
+
+@keyframes line-draw {
+  0% { transform: scaleX(0); transform-origin: left; }
+  45% { transform: scaleX(1); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: right; }
+  95%, 100% { transform: scaleX(0); transform-origin: right; }
+}
 
 .preview-focus { display: grid; place-items: center; background: var(--surface-2); }
 
@@ -937,8 +1018,9 @@ html[data-theme="light"] .theme-icon {
   transition: color .25s ease, padding-left .25s ease;
 }
 
-.contact-links a span { color: var(--accent); }
+.contact-links a span { color: var(--accent); display: inline-block; transition: transform .25s var(--ease); }
 .contact-links a:hover { padding-left: .5rem; color: var(--text); }
+.contact-links a:hover span { transform: translate(3px, -2px); }
 
 .contact-form { display: grid; gap: 1.2rem; }
 
