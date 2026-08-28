@@ -46,9 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (savedTheme) {
     applyTheme(savedTheme);
   } else {
-    // FIX: no saved theme yet — sync the icon to the default (dark) state
-    // instead of leaving the hardcoded HTML icon unmanaged.
-    applyTheme("dark");
+    // No saved theme yet — default to light.
+    applyTheme("light");
   }
 
   // Change theme when the button is clicked.
